@@ -38,7 +38,9 @@ export default {
                 },
             },
             fontFamily: {
-                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                serif: ['"Playfair Display"', ...defaultTheme.fontFamily.serif],
+                display: ['"Playfair Display"', 'serif'],
             },
             boxShadow: {
                 diffused: '0 8px 30px -4px rgba(39, 39, 42, 0.04), 0 2px 6px -1px rgba(39, 39, 42, 0.02)',

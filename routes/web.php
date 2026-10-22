@@ -10,13 +10,11 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StockOpnameController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    if (auth()->check()) {
-        return redirect()->route('dashboard');
-    }
-    return redirect()->route('login');
-});
+    return Inertia::render('Welcome');
+})->name('welcome');
 
 Route::middleware(['auth'])->group(function () {
     // Dashboard

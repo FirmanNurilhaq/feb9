@@ -1,6 +1,5 @@
 import React, { FormEventHandler } from 'react';
-import { Head, useForm } from '@inertiajs/react';
-import { LockKey, Envelope, ArrowRight, Sparkle } from '@phosphor-icons/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status }: { status?: string }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -17,104 +16,166 @@ export default function Login({ status }: { status?: string }) {
     };
 
     return (
-        <div className="min-h-screen bg-[#FCFCFC] flex flex-col justify-center relative overflow-hidden font-sans">
-            {/* Subtle luxury geometric background accents */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#F7DDE2]/30 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#EFF6F2]/40 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
+        <div className="min-h-screen bg-stone-50 flex flex-col justify-center relative overflow-hidden font-sans text-stone-900 selection:bg-stone-200">
+            {/* Background subtle radial texture & blur */}
+            <div
+                className="absolute top-0 right-0 w-[500px] h-[500px] bg-rose-100/40 rounded-full blur-3xl pointer-events-none -mr-28 -mt-28"
+                aria-hidden="true"
+            />
+            <div
+                className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-stone-200/50 rounded-full blur-3xl pointer-events-none -ml-28 -mb-28"
+                aria-hidden="true"
+            />
 
-            <Head title="Masuk — Febnine Atelier Dashboard" />
+            <Head title="Masuk Portal Otoritas — Febnine Atelier" />
 
             <div className="max-w-md w-full mx-auto px-6 py-12 relative z-10">
-                {/* Brand Logo & Editorial Header */}
-                <div className="text-left mb-8">
-                    <img 
-                        src="/images/logo_clean.png" 
-                        alt="Febnine Atelier" 
-                        className="h-20 w-auto object-contain mb-6"
-                    />
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FDF4F5] border border-[#E59AA6]/30 text-[#B86875] text-xs font-semibold mb-3">
-                        <Sparkle size={14} weight="fill" />
-                        Gudang & Inventori Terpusat
+                {/* Header Brand Febnine Atelier */}
+                <div className="text-center mb-8">
+                    <Link href="/" className="inline-block group mb-4">
+                        <img
+                            src="/images/logo_clean.png"
+                            alt="Febnine Atelier"
+                            className="h-16 w-auto mx-auto object-contain transition-transform group-hover:scale-105"
+                        />
+                    </Link>
+
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-stone-700 text-[11px] font-medium uppercase tracking-widest mb-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-stone-800"></span>
+                        Portal Otoritas Tunggal Gudang
                     </div>
-                    <h1 className="text-2xl font-bold text-[#27272A] tracking-tight">
-                        Selamat Datang Kembali
+
+                    <h1 className="font-serif text-3xl font-normal text-stone-900 tracking-tight">
+                        Febnine Atelier
                     </h1>
-                    <p className="mt-1 text-xs text-[#959595] leading-relaxed">
-                        Silakan masukkan kredensial otoritas tunggal untuk mengakses manajemen stok dan data penjualan Febnine Atelier.
+                    <p className="mt-2 text-xs text-stone-500 font-light leading-relaxed max-w-xs mx-auto">
+                        Akses sistem manajemen inventori, pergerakan stok SKU, dan pencatatan penjualan terpusat.
                     </p>
                 </div>
 
                 {status && (
-                    <div className="mb-4 p-3 rounded-xl bg-[#EFF6F2] border border-[#7A9D8C]/30 text-[#436453] text-xs font-medium">
+                    <div className="mb-4 p-3.5 bg-stone-100 border border-stone-300 text-stone-800 text-xs font-medium rounded-sm">
                         {status}
                     </div>
                 )}
 
-                {/* Login Form Card */}
-                <div className="bg-white p-8 rounded-2xl border border-[#E8E8E9] shadow-diffused">
-                    <form onSubmit={submit} className="space-y-5 text-xs">
+                {/* Kartu Form Login dengan Nuansa Quiet Elegance */}
+                <div className="bg-white p-8 sm:p-10 border border-stone-200 shadow-xl relative">
+                    <form onSubmit={submit} className="space-y-6 text-xs">
                         <div>
-                            <label className="block font-medium text-[#27272A] mb-1.5">Alamat Email</label>
+                            <label
+                                htmlFor="email"
+                                className="block uppercase tracking-widest text-[10px] font-medium text-stone-600 mb-2"
+                            >
+                                Alamat Email Otoritas
+                            </label>
                             <div className="relative">
                                 <input
+                                    id="email"
                                     type="email"
                                     name="email"
                                     value={data.email}
                                     placeholder="admin@febnine.com"
                                     onChange={(e) => setData('email', e.target.value)}
-                                    className="w-full pl-9 pr-4 py-2.5 rounded-xl text-xs border border-[#E8E8E9] focus:border-[#E59AA6] focus:ring-1 focus:ring-[#E59AA6] transition-luxury"
+                                    className="w-full pl-10 pr-4 py-3 text-xs bg-stone-50/50 border border-stone-300 text-stone-900 placeholder-stone-400 focus:bg-white focus:border-stone-800 focus:outline-none transition-colors"
                                     required
                                     autoFocus
                                 />
-                                <Envelope size={16} className="absolute left-3 top-3 text-[#959595]" />
+                                <div className="absolute left-3.5 top-3.5 text-stone-400 pointer-events-none flex items-center">
+                                    <iconify-icon
+                                        icon="solar:user-linear"
+                                        width="16"
+                                        height="16"
+                                        style={{ strokeWidth: '1.5' }}
+                                    ></iconify-icon>
+                                </div>
                             </div>
-                            {errors.email && <p className="text-[#D9777F] mt-1.5 text-[11px]">{errors.email}</p>}
+                            {errors.email && (
+                                <p className="text-rose-600 mt-1.5 text-[11px]">{errors.email}</p>
+                            )}
                         </div>
 
                         <div>
-                            <label className="block font-medium text-[#27272A] mb-1.5">Kata Sandi</label>
+                            <label
+                                htmlFor="password"
+                                className="block uppercase tracking-widest text-[10px] font-medium text-stone-600 mb-2"
+                            >
+                                Kata Sandi
+                            </label>
                             <div className="relative">
                                 <input
+                                    id="password"
                                     type="password"
                                     name="password"
                                     value={data.password}
                                     placeholder="••••••••"
                                     onChange={(e) => setData('password', e.target.value)}
-                                    className="w-full pl-9 pr-4 py-2.5 rounded-xl text-xs border border-[#E8E8E9] focus:border-[#E59AA6] focus:ring-1 focus:ring-[#E59AA6] transition-luxury"
+                                    className="w-full pl-10 pr-4 py-3 text-xs bg-stone-50/50 border border-stone-300 text-stone-900 placeholder-stone-400 focus:bg-white focus:border-stone-800 focus:outline-none transition-colors"
                                     required
                                 />
-                                <LockKey size={16} className="absolute left-3 top-3 text-[#959595]" />
+                                <div className="absolute left-3.5 top-3.5 text-stone-400 pointer-events-none flex items-center">
+                                    <iconify-icon
+                                        icon="solar:shield-check-linear"
+                                        width="16"
+                                        height="16"
+                                        style={{ strokeWidth: '1.5' }}
+                                    ></iconify-icon>
+                                </div>
                             </div>
-                            {errors.password && <p className="text-[#D9777F] mt-1.5 text-[11px]">{errors.password}</p>}
+                            {errors.password && (
+                                <p className="text-rose-600 mt-1.5 text-[11px]">{errors.password}</p>
+                            )}
                         </div>
 
                         <div className="flex items-center justify-between pt-1">
-                            <label className="flex items-center gap-2 cursor-pointer">
+                            <label className="flex items-center gap-2 cursor-pointer select-none">
                                 <input
                                     type="checkbox"
                                     checked={data.remember}
                                     onChange={(e) => setData('remember', e.target.checked)}
-                                    className="rounded border-[#E8E8E9] text-[#E59AA6] focus:ring-[#E59AA6]"
+                                    className="border-stone-300 text-stone-900 focus:ring-0 focus:ring-offset-0 cursor-pointer"
                                 />
-                                <span className="text-[#959595] text-[11px]">Ingat sesi login</span>
+                                <span className="text-stone-500 text-[11px]">Ingat sesi login</span>
                             </label>
-                            <span className="text-[11px] text-[#959595]">Otorisasi Tunggal</span>
+
+                            <Link
+                                href="/"
+                                className="text-stone-400 hover:text-stone-700 text-[11px] transition-colors"
+                            >
+                                &larr; Beranda
+                            </Link>
                         </div>
 
-                        <button
-                            type="submit"
-                            disabled={processing}
-                            className="w-full mt-4 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-semibold text-white bg-[#E59AA6] hover:bg-[#DB8B97] transition-luxury disabled:opacity-50 shadow-xs"
-                        >
-                            <span>{processing ? 'Memverifikasi...' : 'Masuk ke Dashboard'}</span>
-                            <ArrowRight size={16} />
-                        </button>
+                        <div className="pt-2">
+                            <button
+                                type="submit"
+                                disabled={processing}
+                                className="w-full bg-stone-900 text-white py-3.5 text-xs uppercase tracking-widest font-medium hover:bg-stone-800 active:bg-black transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2 shadow-md"
+                            >
+                                {processing ? 'Memverifikasi...' : 'Masuk ke Dashboard Gudang'}
+                                <iconify-icon
+                                    icon="solar:bag-2-linear"
+                                    width="16"
+                                    height="16"
+                                    style={{ strokeWidth: '1.5' }}
+                                ></iconify-icon>
+                            </button>
+                        </div>
                     </form>
+
+                    {/* Catatan Bantuan Kredensial */}
+                    <div className="mt-8 pt-6 border-t border-stone-100 text-center">
+                        <p className="text-[11px] text-stone-400 font-light">
+                            Akun seeder bawaan: <span className="font-mono text-stone-600">admin@febnine.com</span> /{' '}
+                            <span className="font-mono text-stone-600">password</span>
+                        </p>
+                    </div>
                 </div>
 
-                {/* Footer copyright */}
-                <div className="text-center mt-8 text-[11px] text-[#B3B3B3]">
-                    <p>&copy; {new Date().getFullYear()} Febnine Atelier. Seluruh hak cipta dilindungi.</p>
+                <div className="text-center mt-8">
+                    <p className="text-[11px] text-stone-400">
+                        &copy; {new Date().getFullYear()} Febnine Atelier. Sistem Manajemen Inventori Gudang Terpusat.
+                    </p>
                 </div>
             </div>
         </div>

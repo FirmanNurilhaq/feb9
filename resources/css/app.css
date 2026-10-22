@@ -4,9 +4,13 @@
 
 @layer base {
     html {
-        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        color: #27272A;
-        background-color: #FCFCFC;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #1c1917; /* stone-900 */
+        background-color: #ffffff;
+    }
+
+    h1, h2, h3, h4, .font-serif, .font-playfair {
+        font-family: 'Playfair Display', Georgia, serif;
     }
 
     /* Custom subtle scrollbar */
@@ -27,6 +31,15 @@
 }
 
 @layer utilities {
+    /* Hide scrollbar utility for horizontal scroll without scrollbar */
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
     /* Subtle luxury transitions */
     .transition-luxury {
         transition-property: color, background-color, border-color, box-shadow, opacity, transform;
